@@ -52,19 +52,21 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SNUST"
+                    android:text="ID 표시"
                     android:textColor="#FFFFFF"
                     android:id="@+id/main_idInfo"
                     android:gravity="center"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textSize="23dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="HUNGRY"
+                    android:text="NAME 표시"
                     android:textColor="#FFFFFF"
                     android:id="@+id/main_nameInfo"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textSize="15dp"/>
 
             </LinearLayout>
         </LinearLayout>
