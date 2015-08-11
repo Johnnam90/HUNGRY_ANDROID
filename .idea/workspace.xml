@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bd1faac-234a-435e-a919-e1c7471d0b6a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HUNGRY/.idea/misc.xml" afterPath="$PROJECT_DIR$/HUNGRY/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HUNGRY/.idea/vcs.xml" afterPath="$PROJECT_DIR$/HUNGRY/.idea/vcs.xml" />
-    </list>
+    <list default="true" id="6bd1faac-234a-435e-a919-e1c7471d0b6a" name="Default" comment="" />
     <ignored path="HUNGRY_ANDROID.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +18,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="HUNGRY_ANDROID" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
