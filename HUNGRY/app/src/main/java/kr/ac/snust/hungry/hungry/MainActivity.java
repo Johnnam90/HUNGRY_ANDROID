@@ -2,7 +2,6 @@ package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +26,7 @@ public class MainActivity extends Activity {
         main_menuAdapter = new Main_menuAdapter(this);
 
         Resources res = getResources();
-        main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_profile), "프로필 편집"));
+        main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_waiting), "번호표 관련"));
         main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_recent), "최근 게시물"));
         main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_popular), "인기 게시물"));
         main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_recommend), "음식점 추천"));
