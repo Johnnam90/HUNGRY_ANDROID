@@ -8,8 +8,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,10 +41,10 @@ public class MainActivity extends Activity {
         String imgUrl = "http://54.64.160.105:8080/img/thumb/Screen%20Shot%202015-06-09%20at%202.05.50%20PM.png";
         task = new BackgroundTask();
         task.execute(imgUrl);
+        //end
 
 
-
-
+        //메인메뉴
         main_listView = (ListView)findViewById(R.id.main_listView);
         main_menuAdapter = new Main_menuAdapter(this);
 
@@ -54,6 +57,21 @@ public class MainActivity extends Activity {
         main_menuAdapter.addItem(new Main_menuItem(res.getDrawable(R.drawable.main_mine), "내 활동내역"));
 
         main_listView.setAdapter(main_menuAdapter);
+
+
+        //메뉴 클릭 시 인텐트 전달을 위해 눌린 메뉴 확인
+        main_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Main_menuItem curItem = (Main_menuItem) main_menuAdapter.getItem(position);
+                String curData = curItem.getData();
+
+                Toast.makeText(getApplicationContext(), "Selected : " + curData, Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+        //메인메뉴 END
 
 //        ImageRound imageRound = new ImageRound();
 //        imageRound.getRoundedCornerBitmap();
