@@ -33,7 +33,7 @@ public class Middle_listItem {
         mLoc = loc;
         mTime = time;
         mContent = content;
-//        mPictures = pictures;
+        mPictures = pictures;
         mComment = comment;
     }
 
