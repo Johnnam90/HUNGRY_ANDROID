@@ -30,17 +30,22 @@ public class MiddleListActivity extends Activity {
         middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
         "4.5", "2015.11.11", res.getDrawable(R.drawable.nationality_korean), res.getDrawable(R.drawable.taste_swe),
                 res.getDrawable(R.drawable.location_sl), res.getDrawable(R.drawable.time_lc),
-                "Content is here.", res.getDrawable(R.drawable.samplefood), "5 more comments"));
+                "Content is here.", res.getDrawable(R.drawable.samplefood), "5"));
 
         middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
-                "리스트뷰가 완성되었다!!! 효과는 대단했다!!!!!!.", res.getDrawable(R.drawable.samplefood), "3 more comments"));
+                "리스트뷰가 완성되었다!!! 효과는 대단했다!!!!!!.", res.getDrawable(R.drawable.samplefood), "3"));
 
         middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
-                "우와와와와와와 일본~~~~", res.getDrawable(R.drawable.samplefood), "3 more comments"));
+                "우와와와와와와 일본~~~~", res.getDrawable(R.drawable.samplefood), "3"));
+
+        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
+                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
+                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
+                "우와와와와와와 일본~~~~", res.getDrawable(R.drawable.samplefood), "3"));
 
 
 

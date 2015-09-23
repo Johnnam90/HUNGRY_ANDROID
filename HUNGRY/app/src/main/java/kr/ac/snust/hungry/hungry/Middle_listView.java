@@ -25,7 +25,7 @@ public class Middle_listView extends LinearLayout {
     private ImageView mTime;
     private TextView mContent;
     private ImageView mPictures;
-    private Button mComment;
+    private TextView mComment;
 
     private ImageView mIcon;
     private TextView mText;
@@ -41,8 +41,8 @@ public class Middle_listView extends LinearLayout {
 
         //Set TMB
         //레이아웃을 객체화
-        mTmb = (ImageView) findViewById(R.id.middle_thumbNail);
-        mTmb.setImageDrawable(aItem.getTmb());
+//        mTmb = (ImageView) findViewById(R.id.middle_thumbNail);
+//        mTmb.setImageDrawable(aItem.getTmb());
 
         mId = (TextView) findViewById(R.id.middle_idBlank);
         mId.setText(aItem.getId());
@@ -71,7 +71,7 @@ public class Middle_listView extends LinearLayout {
         mPictures = (ImageView) findViewById(R.id.middle_image);
         mPictures.setImageDrawable(aItem.getPictures());
 
-        mComment = (Button) findViewById(R.id.middle_commentBtn);
+        mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
 
     }
