@@ -33,12 +33,17 @@ public class MiddleListActivity extends Activity {
 
         String[] url = new String[5];
 
+        /*
+        *임시 URL 부분*/
         url[0] = "http://54.64.160.105:8080/img/2.jpg";
         url[1] = "http://54.64.160.105:8080/img/3.png";
         url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
         url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
 
-    //여기서 url을 주고 adapter에서 Glide.with(this).load("url").into(imageView);
+
+        /*
+        * 임시 데이터 부분
+        * addItem()으로 추가*/
         Resources res = getResources();
 //        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
 //                "4.5", "2015.11.11", res.getDrawable(R.drawable.nationality_korean), res.getDrawable(R.drawable.taste_swe),
@@ -49,16 +54,6 @@ public class MiddleListActivity extends Activity {
 //                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
 //                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
 //                "리스트뷰가 완성되었다!!! 효과는 대단했다!!!!!!.", res.getDrawable(R.drawable.samplefood), "3"));
-//
-//        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
-//                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
-//                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
-//                "우와와와와와와 일본~~~~", res.getDrawable(R.drawable.samplefood), "3"));
-//
-//        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
-//                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
-//                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
-//                "우와와와와와와 일본~~~~", res.getDrawable(R.drawable.samplefood), "3"));
 
         middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
@@ -80,15 +75,8 @@ public class MiddleListActivity extends Activity {
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 일본~~~~", url[3], "3"));
 
-        /*middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
-                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
-                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
-                "우와와와와와와 일본~~~~", url, "3"));*/
 
         middleListView.setAdapter(middle_listAdapter);
-
-
-
     }
 
 

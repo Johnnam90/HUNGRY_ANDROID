@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+
         android:background="#FFFFFF">
 
         <ImageView
@@ -17,7 +17,7 @@
             android:layout_height="100dp"
             android:id="@+id/middle_image"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            />
 
 
 
@@ -29,7 +29,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="3dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,8 +47,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/middle_regDate"
                     android:textColor="#4D4D4D"
-                    android:layout_marginRight="15dp"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     />
 
             </LinearLayout>
@@ -78,13 +78,14 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:id="@+id/middle_time"
-                    android:layout_marginRight="5dp"/>
+                    android:layout_marginRight="15dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/middle_score"
                     android:textColor="#FF3590"
+                    android:textStyle="bold"
                     />
 
             </LinearLayout>
@@ -98,10 +99,10 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/middle_content"
                     android:textColor="#000000"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:textSize="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
                     />
             </LinearLayout>
 
@@ -115,6 +116,12 @@
         android:gravity="center"
         android:background="#fff14d23">
 
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/middle_content_blank_white"
+            android:layout_marginRight="5dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,12 +129,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:id="@+id/middle_commentBtn"
-            android:layout_marginRight="5dp"/>
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/middle_content_blank_white"/>
+            />
     </LinearLayout>
 
 
