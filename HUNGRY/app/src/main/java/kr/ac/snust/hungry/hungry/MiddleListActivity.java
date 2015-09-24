@@ -39,6 +39,7 @@ public class MiddleListActivity extends Activity {
         url[1] = "http://54.64.160.105:8080/img/3.png";
         url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
         url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
+        url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
 
 
         /*
@@ -60,12 +61,17 @@ public class MiddleListActivity extends Activity {
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 한국~~~~", url[0], "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
+        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "iu_love",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 대한민국~~~~", url[1], "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
+        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "janejang",
+                "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
+                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
+                "우와와와와와와 한국~~~~", url[4], "3"));
+
+        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "woobin",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 중국~~~~~~", url[2], "5"));
