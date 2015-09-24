@@ -29,6 +29,7 @@ public class Middle_listView extends LinearLayout {
     private TextView mContent;
     private ImageView mPictures;
     private TextView mComment;
+    private String mUrl;
 
     private ImageView mIcon;
     private TextView mText;
@@ -71,9 +72,12 @@ public class Middle_listView extends LinearLayout {
         mContent = (TextView) findViewById(R.id.middle_content);
         mContent.setText(aItem.getContent());
 
+
+        mUrl = aItem.getUrl();
         mPictures = (ImageView) findViewById(R.id.middle_image);
         //mPictures.setImageDrawable(aItem.getPictures());
-        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
+//        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
+        Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
 
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
@@ -91,6 +95,7 @@ public class Middle_listView extends LinearLayout {
     public void setmLoc(Drawable loc) { mLoc.setImageDrawable(loc); }
     public void setmTime(Drawable time) { mTime.setImageDrawable(time); }
     public void setmContent(String content) { mContent.setText(content); }
+    public void setmUrl(String url) { mUrl = url; }
 //    public void setmPictures(String pictures) { mPictures.setImageBitmap(pictures);}
     public void setmComment(String comment) { mComment.setText(comment); }
 

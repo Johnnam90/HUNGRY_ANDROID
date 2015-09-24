@@ -56,27 +56,27 @@ public class MiddleListActivity extends Activity {
 //                res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
 //                "리스트뷰가 완성되었다!!! 효과는 대단했다!!!!!!.", res.getDrawable(R.drawable.samplefood), "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
+        middle_listAdapter.addItem(new Middle_listItem("john",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 한국~~~~", url[0], "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "iu_love",
+        middle_listAdapter.addItem(new Middle_listItem("iu_love",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 대한민국~~~~", url[1], "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "janejang",
+        middle_listAdapter.addItem(new Middle_listItem("janejang",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 한국~~~~", url[4], "3"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "woobin",
+        middle_listAdapter.addItem(new Middle_listItem("woobin",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 중국~~~~~~", url[2], "5"));
 
-        middle_listAdapter.addItem(new Middle_listItem(res.getDrawable(R.drawable.profile), "john",
+        middle_listAdapter.addItem(new Middle_listItem("john",
                 "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                 res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                 "우와와와와와와 일본~~~~", url[3], "3"));

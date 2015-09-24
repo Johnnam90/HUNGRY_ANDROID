@@ -46,6 +46,7 @@ public class Middle_listAdapter extends BaseAdapter {
             middle_listView.setmTime(mItems.get(position).getTime());
             middle_listView.setmContent((mItems.get(position).getContent()));
 //            middle_listView.setmPictures(mItems.get(position).getPictures());
+            middle_listView.setmUrl(mItems.get(position).getUrl());
             middle_listView.setmComment(mItems.get(position).getComment());
         }
 
