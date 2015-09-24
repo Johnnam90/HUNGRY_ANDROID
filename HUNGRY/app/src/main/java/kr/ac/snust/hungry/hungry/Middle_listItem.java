@@ -15,7 +15,7 @@ public class Middle_listItem {
     private Drawable mLoc;
     private Drawable mTime;
     private String mContent;
-    private Drawable mPictures;
+    private String mUrl;
     private String mComment;
 
     private Drawable mIcon;
@@ -23,7 +23,7 @@ public class Middle_listItem {
 
     //순서는 인자순
     public Middle_listItem (Drawable tmb, String id, String score, String reg, Drawable type, Drawable taste,
-                            Drawable loc, Drawable time, String content, Drawable pictures, String comment) {
+                            Drawable loc, Drawable time, String content, String url, String comment) {
         mTmb = tmb;
         mId = id;
         mScore = score;
@@ -33,7 +33,7 @@ public class Middle_listItem {
         mLoc = loc;
         mTime = time;
         mContent = content;
-        mPictures = pictures;
+        mUrl = url;
         mComment = comment;
     }
 
@@ -46,6 +46,6 @@ public class Middle_listItem {
     public Drawable getLoc() { return mLoc; }
     public Drawable getTime() { return mTime; }
     public String  getContent() { return mContent; }
-    public Drawable getPictures() { return mPictures; }
+    public String getUrl() { return mUrl; }
     public String getComment() { return mComment; }
 }
