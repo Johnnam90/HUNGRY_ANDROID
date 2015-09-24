@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/middle_idBlank"
                     android:textSize="20dp"
-                    android:textColor="#E62909"
+                    android:textColor="#92191F"
                     android:textStyle="bold"
                     android:layout_marginRight="20dp"/>
 
