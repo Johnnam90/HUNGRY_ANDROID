@@ -1,6 +1,7 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -20,12 +22,18 @@ public class MiddleListActivity extends Activity {
 
     ListView middleListView;
     Middle_listAdapter middle_listAdapter;
-    BitmapFactory bitmap;
+    TextView middle_menu_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.middle_list_layout);
+
+        //인텐트로 전달받은 값 메뉴 이름으로 설정
+        middle_menu_id = (TextView)findViewById(R.id.middle_menu_id);
+        Intent recievedIntent = getIntent();
+        String selectedMenu = recievedIntent.getStringExtra("menu");
+        middle_menu_id.setText(selectedMenu);
 
         //메인메뉴
         middleListView = (ListView)findViewById(R.id.middleListView);

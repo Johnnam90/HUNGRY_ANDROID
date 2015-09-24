@@ -1,9 +1,11 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -62,19 +64,26 @@ public class MainActivity extends Activity {
         main_listView.setAdapter(main_menuAdapter);
 
 
-        //메뉴 클릭 시 인텐트 전달을 위해 눌린 메뉴 확인
+        //메뉴 클릭 시 인텐트 전달
         main_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Main_menuItem curItem = (Main_menuItem) main_menuAdapter.getItem(position);
                 String curData = curItem.getData();
 
-                Toast.makeText(getApplicationContext(), "Selected : " + curData, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MiddleListActivity.class);
+                intent.putExtra("menu", curData);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
+                //Toast.makeText(getApplicationContext(), "Selected : " + curData, Toast.LENGTH_LONG).show();
             }
 
         });
-
+        //인텐트 END
         //메인메뉴 END
+
+
 
 //        ImageRound imageRound = new ImageRound();
 //        imageRound.getRoundedCornerBitmap();
