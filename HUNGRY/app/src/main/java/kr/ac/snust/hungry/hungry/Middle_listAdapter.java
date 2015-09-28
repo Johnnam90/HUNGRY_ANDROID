@@ -16,6 +16,7 @@ public class Middle_listAdapter extends BaseAdapter {
     private List<Middle_listItem> mItems = new ArrayList<Middle_listItem>();
     //listItem.java는 자료형이라 생각
 
+
     public Middle_listAdapter (Context context) {mContext = context;}
     public void addItem(Middle_listItem itm) {mItems.add(itm);}
     public int getCount() {return mItems.size();}
@@ -35,7 +36,7 @@ public class Middle_listAdapter extends BaseAdapter {
             //setIcon(View)에 getIcon(Item)을 넘기며 자료를 설정 Item -> Adapter -> View
             //특정 순서의(mItems.get(position) 자료를 인자로 넘긴다
 
-            middle_listView.setmTmb(mItems.get(position).getTmb());
+//            middle_listView.setmTmb(mItems.get(position).getTmb());
             middle_listView.setmId(mItems.get(position).getId());
             middle_listView.setmScore(mItems.get(position).getScore());
             middle_listView.setmReg(mItems.get(position).getReg());
@@ -44,12 +45,15 @@ public class Middle_listAdapter extends BaseAdapter {
             middle_listView.setmLoc(mItems.get(position).getLoc());
             middle_listView.setmTime(mItems.get(position).getTime());
             middle_listView.setmContent((mItems.get(position).getContent()));
-            middle_listView.setmPictures(mItems.get(position).getPictures());
+//            middle_listView.setmPictures(mItems.get(position).getPictures());
+            middle_listView.setmUrl(mItems.get(position).getUrl());
             middle_listView.setmComment(mItems.get(position).getComment());
         }
 
         return middle_listView;
     }
+
+
 }
 
 

@@ -1,9 +1,11 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +32,7 @@ public class MainActivity extends Activity {
     ListView main_listView;
     Main_menuAdapter main_menuAdapter;
     ImageView main_thumb;
-    BackgroundTask task;
+//    BackgroundTask task;
     Bitmap bitmap;
 
     @Override
@@ -39,8 +43,9 @@ public class MainActivity extends Activity {
         //Profile picture
         main_thumb = (ImageView) findViewById(R.id.main_thumb);
         String imgUrl = "http://54.64.160.105:8080/img/thumb/Screen%20Shot%202015-06-09%20at%202.05.50%20PM.png";
-        task = new BackgroundTask();
-        task.execute(imgUrl);
+        Glide.with(this).load(imgUrl).override(300, 300).centerCrop().into(main_thumb);
+//        task = new BackgroundTask();
+//        task.execute(imgUrl);
         //end
 
 
@@ -59,19 +64,26 @@ public class MainActivity extends Activity {
         main_listView.setAdapter(main_menuAdapter);
 
 
-        //메뉴 클릭 시 인텐트 전달을 위해 눌린 메뉴 확인
+        //메뉴 클릭 시 인텐트 전달
         main_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Main_menuItem curItem = (Main_menuItem) main_menuAdapter.getItem(position);
                 String curData = curItem.getData();
 
-                Toast.makeText(getApplicationContext(), "Selected : " + curData, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MiddleListActivity.class);
+                intent.putExtra("menu", curData);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
+                //Toast.makeText(getApplicationContext(), "Selected : " + curData, Toast.LENGTH_LONG).show();
             }
 
         });
-
+        //인텐트 END
         //메인메뉴 END
+
+
 
 //        ImageRound imageRound = new ImageRound();
 //        imageRound.getRoundedCornerBitmap();
@@ -83,33 +95,33 @@ public class MainActivity extends Activity {
      * .execute() 부분으로 실행
      * 첫 인자는 파마메터, 두 번째는 무상관, 세 번째는 반환값
      */
-    class BackgroundTask extends AsyncTask<String, Integer, Bitmap> {
-        protected void onPreExecute() {
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            try{
-                URL myFileUrl = new URL(urls[0]);
-                HttpURLConnection conn = (HttpURLConnection)myFileUrl.openConnection();
-                conn.setDoInput(true);
-                conn.connect();
-
-                InputStream is = conn.getInputStream();
-
-                bitmap = BitmapFactory.decodeStream(is);
-
-
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-
-        protected void onPostExecute(Bitmap img){
-            main_thumb.setImageBitmap(bitmap);
-        }
-    }
+//    class BackgroundTask extends AsyncTask<String, Integer, Bitmap> {
+//        protected void onPreExecute() {
+//        }
+//
+//        @Override
+//        protected Bitmap doInBackground(String... urls) {
+//            try{
+//                URL myFileUrl = new URL(urls[0]);
+//                HttpURLConnection conn = (HttpURLConnection)myFileUrl.openConnection();
+//                conn.setDoInput(true);
+//                conn.connect();
+//
+//                InputStream is = conn.getInputStream();
+//
+//                bitmap = BitmapFactory.decodeStream(is);
+//
+//
+//            }catch(IOException e){
+//                e.printStackTrace();
+//            }
+//            return bitmap;
+//        }
+//
+//        protected void onPostExecute(Bitmap img){
+//            main_thumb.setImageBitmap(bitmap);
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

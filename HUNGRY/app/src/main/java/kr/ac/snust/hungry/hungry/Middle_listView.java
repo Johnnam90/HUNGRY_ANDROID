@@ -1,5 +1,6 @@
 package kr.ac.snust.hungry.hungry;
 
+import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -8,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +29,7 @@ public class Middle_listView extends LinearLayout {
     private TextView mContent;
     private ImageView mPictures;
     private TextView mComment;
+    private String mUrl;
 
     private ImageView mIcon;
     private TextView mText;
@@ -68,8 +72,12 @@ public class Middle_listView extends LinearLayout {
         mContent = (TextView) findViewById(R.id.middle_content);
         mContent.setText(aItem.getContent());
 
+
+        mUrl = aItem.getUrl();
         mPictures = (ImageView) findViewById(R.id.middle_image);
-        mPictures.setImageDrawable(aItem.getPictures());
+        //mPictures.setImageDrawable(aItem.getPictures());
+//        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
+        Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
 
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
@@ -78,7 +86,7 @@ public class Middle_listView extends LinearLayout {
 
     //setter 선언
     //레이아웃에 자료 설정
-    public void setmTmb(Drawable tmb) { mTmb.setImageDrawable(tmb);}
+//    public void setmTmb(Drawable tmb) { mTmb.setImageDrawable(tmb);}
     public void setmId(String id) { mId.setText(id);}
     public void setmScore(String score) { mScore.setText(score);}
     public void setmReg(String reg) { mReg.setText(reg);}
@@ -87,7 +95,8 @@ public class Middle_listView extends LinearLayout {
     public void setmLoc(Drawable loc) { mLoc.setImageDrawable(loc); }
     public void setmTime(Drawable time) { mTime.setImageDrawable(time); }
     public void setmContent(String content) { mContent.setText(content); }
-    public void setmPictures(Drawable pictures) { mPictures.setImageDrawable(pictures);}
+    public void setmUrl(String url) { mUrl = url; }
+//    public void setmPictures(String pictures) { mPictures.setImageBitmap(pictures);}
     public void setmComment(String comment) { mComment.setText(comment); }
 
 }
