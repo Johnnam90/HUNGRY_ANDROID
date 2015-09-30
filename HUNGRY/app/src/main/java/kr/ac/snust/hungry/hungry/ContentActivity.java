@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +26,17 @@ public class ContentActivity extends Activity {
     ListView replyListView;
     reply_listAdapter replyAdapter;
 
+    ImageView id_thumbnail;
     ImageView img1;
     ImageView img2;
     ImageView img3;
 
+    TextView idArea;
     TextView replyNum;
+    TextView scoreArea;
+    TextView contentArea;
+
+    ScrollView scrollView;
 
 
 
@@ -43,6 +50,23 @@ public class ContentActivity extends Activity {
         // 리스트뷰 객체 참조
         replyListView = (ListView) findViewById(R.id.reply_listView);
 
+        //썸네일 설쩡쩡
+        id_thumbnail=(ImageView) findViewById(R.id.id_thumbnail);
+        Glide.with(this).load("http://54.64.160.105:8080/img/thumb/KWB.jpg").into(id_thumbnail);
+
+        //아이디 설쩡
+        idArea=(TextView) findViewById(R.id.id_area);
+        idArea.setText("" + intent.getStringExtra("id"));
+
+        //점수 설쩡
+        scoreArea=(TextView) findViewById(R.id.scoreTxt);
+        scoreArea.setText(""+intent.getStringExtra("score"));
+
+        //내용 설정
+        contentArea=(TextView) findViewById(R.id.contentTxt);
+        contentArea.setText(""+intent.getStringExtra("content"));
+
+        //내용 이미지 설쩡
         img1=(ImageView) findViewById(R.id.img1);
         img2=(ImageView) findViewById(R.id.img2);
         img3=(ImageView) findViewById(R.id.img3);
@@ -68,7 +92,6 @@ public class ContentActivity extends Activity {
             Glide.with(this).load(imgURL[2]).into(img3);
         }
 
-
         // 어댑터 객체 생성
         replyAdapter = new reply_listAdapter(this);
 
@@ -91,6 +114,10 @@ public class ContentActivity extends Activity {
 
         // 리스트뷰에 어댑터 설정
         replyListView.setAdapter(replyAdapter);
+
+        //스크롤 화면 맨 위로 강제이동
+        scrollView=(ScrollView) findViewById(R.id.scrollView);
+        scrollView.fullScroll(View.FOCUS_UP);
 
         // 새로 정의한 리스너로 객체를 만들어 설정
         replyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

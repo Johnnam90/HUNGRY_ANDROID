@@ -303,11 +303,16 @@ public class MiddleListActivity extends Activity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Middle_listItem curItem = (Middle_listItem) middle_listAdapter.getItem(position);
-                        String curData = curItem.getId();
+                        String curId = curItem.getId();
+                        String curScore = curItem.getScore();
+                        String curContent = curItem.getContent();
+
                         //Toast.makeText(getApplicationContext(), "글쓴이눈 ! " + curData, Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(getApplicationContext(), ContentActivity.class);
-                        intent.putExtra("id", curData);
+                        intent.putExtra("id", curId);
+                        intent.putExtra("score", curScore);
+                        intent.putExtra("content", curContent);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                     }
