@@ -3,13 +3,12 @@ package kr.ac.snust.hungry.hungry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,9 +22,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by John on 8/14/15.
@@ -302,6 +298,21 @@ public class MiddleListActivity extends Activity {
 
                 middleListView.setAdapter(middle_listAdapter);
 
+                //메뉴 클릭 시 인텐트 전달
+                middleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Middle_listItem curItem = (Middle_listItem) middle_listAdapter.getItem(position);
+                        String curData = curItem.getId();
+                        //Toast.makeText(getApplicationContext(), "글쓴이눈 ! " + curData, Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(getApplicationContext(), ContentActivity.class);
+                        intent.putExtra("id", curData);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+
+                });
             }catch(Exception ex) {
 
             }
