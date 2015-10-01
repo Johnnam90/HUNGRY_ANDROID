@@ -3,6 +3,9 @@ package kr.ac.snust.hungry.hungry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,6 +39,71 @@ public class MiddleListActivity extends Activity {
     getJsonByPhp task;
 
     String[] url = new String[5];
+
+    //drawable 초기화 부분
+    Drawable typeImg = new Drawable() {
+        @Override
+        public void draw(Canvas canvas) {
+
+        }
+
+        @Override
+        public void setAlpha(int i) {
+
+        }
+
+        @Override
+        public void setColorFilter(ColorFilter colorFilter) {
+
+        }
+
+        @Override
+        public int getOpacity() {
+            return 0;
+        }
+    };
+    Drawable tasteImg = new Drawable() {
+        @Override
+        public void draw(Canvas canvas) {
+
+        }
+
+        @Override
+        public void setAlpha(int i) {
+
+        }
+
+        @Override
+        public void setColorFilter(ColorFilter colorFilter) {
+
+        }
+
+        @Override
+        public int getOpacity() {
+            return 0;
+        }
+    };
+    Drawable locImg = new Drawable() {
+        @Override
+        public void draw(Canvas canvas) {
+
+        }
+
+        @Override
+        public void setAlpha(int i) {
+
+        }
+
+        @Override
+        public void setColorFilter(ColorFilter colorFilter) {
+
+        }
+
+        @Override
+        public int getOpacity() {
+            return 0;
+        }
+    };
 
 
     @Override
@@ -128,6 +197,7 @@ public class MiddleListActivity extends Activity {
         @Override
         protected String doInBackground(String... urls) {
             StringBuilder jsonHtml = new StringBuilder();
+
             try{
                 //url ����
                 URL url = new URL(urls[0]);
@@ -224,6 +294,8 @@ public class MiddleListActivity extends Activity {
             url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
             url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
 
+
+
             ArrayList<ListItem> lastDatas = new ArrayList<ListItem>();
             StringBuilder tempLastString = new StringBuilder();
 
@@ -267,9 +339,61 @@ public class MiddleListActivity extends Activity {
                 user 이름을 테스트 해봄
 
                  */
-                String testName = lastDatas.get(1).getData(3);
-                String testContent = lastDatas.get(1).getData(2);
 
+
+                for(int i=0; i<lastDatas.size();i++){
+
+                    ListItem tempItem = lastDatas.get(i);
+
+                    if(tempItem.getData(7).equals("korean")){
+                        typeImg = res.getDrawable(R.drawable.nationality_korean);
+                    }else if(tempItem.getData(7).equals("japanes")){
+                        typeImg = res.getDrawable(R.drawable.nationality_japanes);
+                    }else if(tempItem.getData(7).equals("european")){
+                        typeImg = res.getDrawable(R.drawable.nationality_european);
+                    }else if(tempItem.getData(7).equals("chines")){
+                        typeImg = res.getDrawable(R.drawable.nationality_chines);
+                    }else{
+                        //그냥 국가 이미지
+                    }
+                    if(tempItem.getData(8).equals("hot")){
+                        tasteImg = res.getDrawable(R.drawable.taste_hot);
+                    }else if(tempItem.getData(8).equals("swe")){
+                        tasteImg = res.getDrawable(R.drawable.taste_swe);
+                    }else if(tempItem.getData(8).equals("sal")){
+                        tasteImg = res.getDrawable(R.drawable.taste_sal);
+                    }else if(tempItem.getData(8).equals("soa")){
+                        tasteImg = res.getDrawable(R.drawable.taste_soa);
+                    }else if(tempItem.getData(8).equals("bit")){
+                        tasteImg = res.getDrawable(R.drawable.taste_bit);
+                    }else{
+                        //그냥 맛
+                    }
+                    if(tempItem.getData(9).equals("Seoul")){
+                        locImg = res.getDrawable(R.drawable.location_sl);
+                    }else if(tempItem.getData(9).equals("KK")){
+                        locImg = res.getDrawable(R.drawable.location_kk);
+                    }else if(tempItem.getData(9).equals("KW")){
+                        locImg = res.getDrawable(R.drawable.location_kw);
+                    }else if(tempItem.getData(9).equals("KS")){
+                        locImg = res.getDrawable(R.drawable.location_ks);
+                    }else if(tempItem.getData(9).equals("CC")){
+                        locImg = res.getDrawable(R.drawable.location_cc);
+                    }else if(tempItem.getData(9).equals("JR")){
+                        locImg = res.getDrawable(R.drawable.location_jr);
+                    }else if(tempItem.getData(9).equals("JJ")){
+                        locImg = res.getDrawable(R.drawable.location_jj);
+                    }else{
+
+                    }
+
+
+                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
+                            tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
+                            locImg, res.getDrawable(R.drawable.time_dn),
+                            tempItem.getData(1), url[0], tempItem.getData(10)));
+                }
+/*
                 middle_listAdapter.addItem(new Middle_listItem(testName,
                         "4.5", "2015.11.14", res.getDrawable(R.drawable.nationality_chines), res.getDrawable(R.drawable.taste_hot),
                         res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
@@ -295,7 +419,7 @@ public class MiddleListActivity extends Activity {
                         res.getDrawable(R.drawable.location_kk), res.getDrawable(R.drawable.time_dn),
                         "우와와와와와와 일본~~~~", url[3], "3"));
 
-
+*/
                 middleListView.setAdapter(middle_listAdapter);
 
                 //메뉴 클릭 시 인텐트 전달
