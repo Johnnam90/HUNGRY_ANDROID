@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".UserActivity"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_radius"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright ⓒ 2015 Team AYH All Rights Reserved"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="9dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="90dp">
+
+            <ImageView
+                android:layout_width="165dp"
+                android:layout_height="165dp"
+                android:src="@drawable/hungry_logo"
+                android:layout_marginRight="13dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배고파?"
+                    android:textSize="30dp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="음식점 추천 소셜 네트워크 서비스"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:textSize="10dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--사용자 정보 입력-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
+            <!--정보 입력-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I  D"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_marginRight="11dp"/>
+                    <!--Id, PW 비율-->
+
+                    <EditText
+                        android:layout_width="180dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/logIn_id"
+                        android:textColor="#ff554433"
+                        android:background="#FFFFFF"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="3dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PW"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <EditText
+                        android:layout_width="180dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/logIn_pw"
+                        android:background="#FFFFFF"
+                        android:textColor="#ff554433"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"/>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--로그인 버튼-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="55dp"
+                    android:text="로그인"
+                    android:textStyle="bold"
+                    android:background="#ff554433"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="1dp"
+                    android:id="@+id/logIn_btn"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HUNGRY?에 처음 오셨나요?"
+                android:textSize="12dp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:layout_marginRight="3dp"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여기를 눌러주세요."
+                android:textColor="#0fc0fc"
+                android:textSize="12dp"
+                android:textStyle="italic"
+                android:background="#EB421C"
+                android:id="@+id/connectWeb_btn"/>
+
+        </LinearLayout>
+
+        <!--Footer-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="135dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="V 1.0"
+                android:textColor="#ff554433"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:layout_marginLeft="298dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
