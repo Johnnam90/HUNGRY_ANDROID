@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -24,14 +25,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-
-
-
 public class MainActivity extends Activity {
     //Main Activity
     ListView main_listView;
     Main_menuAdapter main_menuAdapter;
     ImageView main_thumb;
+    TextView main_idInfo;
 //    BackgroundTask task;
     Bitmap bitmap;
 
@@ -40,6 +39,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Profile picture
         main_thumb = (ImageView) findViewById(R.id.main_thumb);
         String imgUrl = "http://54.64.160.105:8080/img/thumb/Screen%20Shot%202015-06-09%20at%202.05.50%20PM.png";
@@ -47,6 +47,11 @@ public class MainActivity extends Activity {
 //        task = new BackgroundTask();
 //        task.execute(imgUrl);
         //end
+
+
+        main_idInfo = (TextView) findViewById(R.id.main_idInfo);
+        Intent fromUser_intent = getIntent();
+        main_idInfo.setText("" + fromUser_intent.getStringExtra("id"));
 
 
         //메인메뉴
