@@ -171,18 +171,17 @@ public class MiddleListActivity extends Activity {
             StringBuilder jsonHtml = new StringBuilder();
 
             try{
-                //url ����
+                //url 변수 선언
                 URL url = new URL(urls[0]);
-
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-
-                //����Ǿ��ٸ�
+                //타임아웃
                 if(conn != null)    {
                     conn.setConnectTimeout(10000);
 
 
                     /* post 하는 부분 */
+                    //전달 헤더 설정
                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                     conn.setRequestProperty("Accept","application/json");
                     conn.setRequestMethod("POST");
@@ -259,8 +258,7 @@ public class MiddleListActivity extends Activity {
         * addItem()으로 추가*/
             Resources res = getResources();
 
-                   /*
-        *임시 URL 부분*/
+            //임시 이미지 URL
             url[0] = "http://54.64.160.105:8080/img/2.jpg";
             url[1] = "http://54.64.160.105:8080/img/3.png";
             url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
@@ -276,7 +274,6 @@ public class MiddleListActivity extends Activity {
             //string�� �ִ� �����͸� json ���� �ް� ó���� �� �ְ�.
 
             try {
-
                 //JSONObject �����ϰ� �ȿ� result ��̸� ����.
                 JSONObject jsonObject = new JSONObject(str);
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
@@ -310,9 +307,7 @@ public class MiddleListActivity extends Activity {
 
                 /*
                 user 이름을 테스트 해봄
-
                  */
-
 
                 for(int i=0; i<lastDatas.size();i++){
 
