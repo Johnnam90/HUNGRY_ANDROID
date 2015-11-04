@@ -36,7 +36,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/logout_btn"
-                android:id="@+id/main_log_out_img"
+                android:id="@+id/main_logout_img"
                 android:padding="5dp"
                 android:layout_marginTop="6dp"/>
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="로그아웃"
                 android:textColor="#FFFFFF"
-                android:id="@+id/main_log_out_text"
+                android:id="@+id/main_logout_text"
                 android:padding="5dp"
                 android:layout_marginTop="5dp"
                 android:gravity="left"/>

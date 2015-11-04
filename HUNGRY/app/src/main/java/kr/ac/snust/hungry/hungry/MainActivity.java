@@ -34,10 +34,15 @@ public class MainActivity extends Activity {
     ListView main_listView;
     Main_menuAdapter main_menuAdapter;
     ImageView main_thumb;
+    ImageView main_logout_img;
     TextView main_idInfo;
     TextView main_nameInfo;
+    TextView main_logout_txt;
     Bitmap bitmap;
+
+
     String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,8 @@ public class MainActivity extends Activity {
         main_idInfo = (TextView) findViewById(R.id.main_idInfo);
         main_nameInfo = (TextView) findViewById(R.id.main_nameInfo);
         main_thumb = (ImageView) findViewById(R.id.main_thumb);
+        main_logout_img = (ImageView) findViewById(R.id.main_logout_img);
+        main_logout_txt = (TextView) findViewById(R.id.main_logout_text);
 
         Intent fromUser_intent = getIntent();
 
@@ -95,6 +102,68 @@ public class MainActivity extends Activity {
             }
 
         });
+
+        //로그아웃 이미지 버튼
+        main_logout_img.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //YES Button
+                AlertDialog.Builder altDlg = new AlertDialog.Builder(MainActivity.this);
+                altDlg.setMessage("로그아웃 하시겠습니까?\n자동로그인 정보는 삭제됩니다.");
+                altDlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whitchutton) {
+                        //Revome all SharedPreferences Data
+                        UserPreference.removeAllPreferences(MainActivity.this);
+
+                        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+                });
+                //NO Button
+                altDlg.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witchButton) {
+                        dialog.cancel();
+                    }
+                });
+
+                //Title
+                altDlg.setTitle("Are You Sure?");
+                //Image
+//            altDlg.setIcon(R.drawable.hungry_logo);
+                altDlg.show();
+            }
+        });
+        //로그아웃 텍스트 버튼
+        main_logout_txt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //YES Button
+                AlertDialog.Builder altDlg = new AlertDialog.Builder(MainActivity.this);
+                altDlg.setMessage("로그아웃 하시겠습니까?\n자동로그인 정보는 삭제됩니다.");
+                altDlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whitchutton) {
+                        //Revome all SharedPreferences Data
+                        UserPreference.removeAllPreferences(MainActivity.this);
+
+                        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+                });
+                //NO Button
+                altDlg.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witchButton) {
+                        dialog.cancel();
+                    }
+                });
+
+                //Title
+                altDlg.setTitle("Are You Sure?");
+                //Image
+//            altDlg.setIcon(R.drawable.hungry_logo);
+                altDlg.show();
+            }
+        });
+
         //인텐트 END
         //메인메뉴 END
 
@@ -131,7 +200,7 @@ public class MainActivity extends Activity {
             //Title
             altDlg.setTitle("Are You Sure?");
             //Image
-            altDlg.setIcon(R.drawable.hungry_logo);
+//            altDlg.setIcon(R.drawable.hungry_logo);
             altDlg.show();
         }
         return false;
