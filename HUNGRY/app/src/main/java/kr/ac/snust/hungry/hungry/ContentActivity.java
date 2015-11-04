@@ -51,17 +51,11 @@ public class ContentActivity extends Activity {
 
     ScrollView scrollView;
     String txtSeq;
-<<<<<<< HEAD
-    String imgURL[];
-
-    int cnt;
-=======
 
     String imgURL[];
 
     int cnt;
 
->>>>>>> 8cb97a36eca03ca3d6d501f0f2b91c895d1f26d6
 
     getJsonByPHP task;
 
@@ -98,15 +92,8 @@ public class ContentActivity extends Activity {
 
         Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
 
-<<<<<<< HEAD
         task = new getJsonByPHP();
         task.execute("http://54.64.160.105/content.php");
-=======
-
-        task = new getJsonByPHP();
-        task.execute("http://54.64.160.105/content.php");
-
->>>>>>> 8cb97a36eca03ca3d6d501f0f2b91c895d1f26d6
 
         //내용 이미지 설쩡
         img1=(ImageView) findViewById(R.id.img1);
