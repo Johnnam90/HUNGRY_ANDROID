@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+//import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -78,6 +79,7 @@ public class Middle_listView extends LinearLayout {
         //mPictures.setImageDrawable(aItem.getPictures());
 //        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
         Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
+        //Log.v("listAdapter", mUrl);
 
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
