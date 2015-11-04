@@ -81,7 +81,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="left"
@@ -94,7 +94,8 @@
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:textSize="20dp"
-                        android:layout_marginRight="11dp"/>
+                        android:layout_marginRight="11dp"
+                        android:gravity="left" />
                     <!--Id, PW 비율-->
 
                     <EditText
@@ -108,7 +109,7 @@
 
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="left"
@@ -122,7 +123,8 @@
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:textSize="20dp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:gravity="left" />
 
                     <EditText
                         android:layout_width="180dp"
