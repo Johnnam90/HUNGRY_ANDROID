@@ -2,7 +2,12 @@ package kr.ac.snust.hungry.hungry;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+
+import android.media.Image;
+//import android.util.Log;
+
 import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -75,6 +80,7 @@ public class Middle_listView extends LinearLayout {
         //mPictures.setImageDrawable(aItem.getPictures());
 //        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
         Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
+        //Log.v("listAdapter", mUrl);
 
         Log.d("Message", "Middle_listView1");
         mComment = (TextView) findViewById(R.id.middle_commentBtn);

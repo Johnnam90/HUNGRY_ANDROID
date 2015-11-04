@@ -27,6 +27,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import android.util.Log;
+
 /**
  * Created by John on 8/14/15.
  */
@@ -168,6 +170,8 @@ public class MiddleListActivity extends Activity {
 
     private class getJsonByPhp extends AsyncTask<String, Integer, String> {
 
+        String logtag = "logcat test";
+
         @Override
         protected String doInBackground(String... urls) {
             StringBuilder jsonHtml = new StringBuilder();
@@ -302,6 +306,8 @@ public class MiddleListActivity extends Activity {
                     //ArrayList�� ��ü ����.
                     lastDatas.add(i, data);
 
+                    Log.v(logtag, img);
+
                 }
 
                 //얻은 데이터로 리스트 뷰 만드는 부분
@@ -356,7 +362,13 @@ public class MiddleListActivity extends Activity {
 
                     }
 
-                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
+
+                    Log.v(logtag+" after temp", tempItem.getData(6));
+
+                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
+
+                    //middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
+
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),
                             tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(0)));
