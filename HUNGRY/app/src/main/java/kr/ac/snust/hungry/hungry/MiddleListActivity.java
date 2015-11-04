@@ -260,12 +260,12 @@ public class MiddleListActivity extends Activity {
             Resources res = getResources();
 
             //임시 이미지 URL
-            url[0] = "http://54.64.160.105:8080/img/2.jpg";
-            url[1] = "http://54.64.160.105:8080/img/3.png";
-            url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
-            url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
-            url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
-
+//            url[0] = "http://54.64.160.105:8080/img/2.jpg";
+//            url[1] = "http://54.64.160.105:8080/img/3.png";
+//            url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
+//            url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
+//            url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
+//
 
 
             ArrayList<ListItem> lastDatas = new ArrayList<ListItem>();
@@ -383,6 +383,7 @@ public class MiddleListActivity extends Activity {
                         intent.putExtra("seq", curSeq);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
+                        Log.d("MESSAGE1", "OK");
                     }
 
                 });

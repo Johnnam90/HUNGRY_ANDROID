@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,12 +51,11 @@ public class ContentActivity extends Activity {
 
     ScrollView scrollView;
     String txtSeq;
-<<<<<<< HEAD
+
     String imgURL[];
 
     int cnt;
-=======
->>>>>>> 766ab8807e7e63b6490fb028dab5e338afdb8788
+
 
     getJsonByPHP task;
 
@@ -64,6 +64,8 @@ public class ContentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_layout);
+
+
 
         Intent intent = getIntent();
 
@@ -84,17 +86,16 @@ public class ContentActivity extends Activity {
 
         //내용 설정
         contentArea=(TextView) findViewById(R.id.contentTxt);
-        contentArea.setText(""+intent.getStringExtra("content"));
+        contentArea.setText("" + intent.getStringExtra("content"));
 
         txtSeq = intent.getStringExtra("seq");
 
         Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
 
-<<<<<<< HEAD
+
         task = new getJsonByPHP();
         task.execute("http://54.64.160.105/content.php");
-=======
->>>>>>> 766ab8807e7e63b6490fb028dab5e338afdb8788
+
 
         //내용 이미지 설쩡
         img1=(ImageView) findViewById(R.id.img1);
@@ -103,29 +104,8 @@ public class ContentActivity extends Activity {
 
         replyNum=(TextView) findViewById(R.id.reply_num);
 
-        if(imgURL.length==1){
-            Glide.with(this).load("http://54.64.160.105:8080/img/" + imgURL[0]).into(img1);
-        }else if(imgURL.length==2){
-            Glide.with(this).load("http://54.64.160.105:8080/img/" +imgURL[0]).into(img1);
-
-            img2.setVisibility(View.VISIBLE);
-            Glide.with(this).load("http://54.64.160.105:8080/img/" +imgURL[1]).into(img2);
-        }else if(imgURL.length==3){
-            Glide.with(this).load("http://54.64.160.105:8080/img/" +imgURL[0]).into(img1);
-
-            img2.setVisibility(View.VISIBLE);
-            Glide.with(this).load("http://54.64.160.105:8080/img/" +imgURL[1]).into(img2);
-
-            img3.setVisibility(View.VISIBLE);
-            Glide.with(this).load("http://54.64.160.105:8080/img/" +imgURL[2]).into(img3);
-        }
-
         // 어댑터 객체 생성
         replyAdapter = new reply_listAdapter(this);
-
-        //댓글위한 세로 길이 확보
-        replyNum.setText(""+cnt);
-        replyListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cnt * 160));
 
 
         //스크롤 화면 맨 위로 강제이동
@@ -174,7 +154,6 @@ public class ContentActivity extends Activity {
         @Override
         protected String doInBackground(String... urls) {
             StringBuilder jsonHtml = new StringBuilder();
-
             try{
                 //url 변수 선언
                 URL url = new URL(urls[0]);
@@ -240,7 +219,6 @@ public class ContentActivity extends Activity {
             catch(Exception ex){
                 ex.printStackTrace();
             }
-
             return jsonHtml.toString();
         }
 
@@ -252,13 +230,16 @@ public class ContentActivity extends Activity {
 
 
             int idx=str.indexOf("@");
-            String str1=str.substring(0, idx - 1);
+            String str1=str.substring(0, idx);
             String str2=str.substring(idx + 1);
 
             Resources res = getResources();
 
             //str1: 이미지, Glide 설졍
+
             try{
+                String basedUrl = "http://54.64.160.105:8080/img/";
+
                 JSONObject jsonObject = new JSONObject(str1);
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
 
@@ -267,9 +248,25 @@ public class ContentActivity extends Activity {
                 for(int i=0; i< jsonArray.length(); i++){
                     JSONObject nodeData = jsonArray.getJSONObject(i);
 
-                    imgURL[i] = nodeData.getString("img");
+                    imgURL[i] =basedUrl + nodeData.getString("img");
+                    Log.d("imgURL",imgURL[i]);
                 }
+                if(imgURL.length==1){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
+                }else if(imgURL.length==2){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
 
+                    img2.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[1]).into(img2);
+                }else if(imgURL.length==3){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
+
+                    img2.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[1]).into(img2);
+
+                    img3.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[2]).into(img3);
+                }
             }catch (Exception ex){
 
             }
@@ -301,6 +298,11 @@ public class ContentActivity extends Activity {
 
                         replyAdapter.addItem(new reply_listItem(tempItem.getData(1), tempItem.getData(2), tempItem.getData(0)));
                     }
+                    //댓글위한 세로 길이 확보
+
+                    cnt+=1;
+                    replyNum.setText(""+cnt);
+                    replyListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cnt * 160));
 
                     replyListView.setAdapter(replyAdapter);
                 }
