@@ -1,4 +1,4 @@
-package kr.ac.snust.hungry.hungry;
+ package kr.ac.snust.hungry.hungry;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
