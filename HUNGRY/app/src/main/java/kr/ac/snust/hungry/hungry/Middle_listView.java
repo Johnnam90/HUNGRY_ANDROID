@@ -77,10 +77,13 @@ public class Middle_listView extends LinearLayout {
 
         mUrl = aItem.getUrl();
         mPictures = (ImageView) findViewById(R.id.middle_image);
+        Log.d("Glide", mUrl);
         //mPictures.setImageDrawable(aItem.getPictures());
+        //Log.v("pics prob.", mUrl);
 //        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
         Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
         //Log.v("listAdapter", mUrl);
+        Log.d("Glide", mUrl);
 
         Log.d("Message", "Middle_listView1");
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
