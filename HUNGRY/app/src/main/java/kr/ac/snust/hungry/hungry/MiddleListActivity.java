@@ -365,7 +365,11 @@ public class MiddleListActivity extends Activity {
 
                     Log.v(logtag+" after temp", tempItem.getData(6));
 
+<<<<<<< HEAD
                     middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
+=======
+                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
+>>>>>>> origin/master
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),
                             tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(0)));
