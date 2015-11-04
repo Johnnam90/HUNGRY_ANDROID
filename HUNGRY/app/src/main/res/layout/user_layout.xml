@@ -133,7 +133,8 @@
                         android:background="#FFFFFF"
                         android:textColor="#ff554433"
                         android:layout_marginRight="5dp"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:inputType="textPassword"/>
                 </LinearLayout>
             </LinearLayout>
 
