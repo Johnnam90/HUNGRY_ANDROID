@@ -88,9 +88,10 @@ public class ContentActivity extends Activity {
         contentArea=(TextView) findViewById(R.id.contentTxt);
         contentArea.setText("" + intent.getStringExtra("content"));
 
-        //txtSeq = intent.getStringExtra("seq");
+        txtSeq = intent.getStringExtra("seq");
         //Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
 
+        Log.d("function","OK");
         task = new getJsonByPHP();
         task.execute("http://54.64.160.105/content.php");
 
@@ -160,7 +161,6 @@ public class ContentActivity extends Activity {
                 if(conn != null)    {
                     conn.setConnectTimeout(10000);
 
-
                     /* post 하는 부분 */
                     //전달 헤더 설정
                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -225,6 +225,7 @@ public class ContentActivity extends Activity {
             String commentRegdate;
             String commentWriter;
 
+            Log.d("onPostExe","OKOK");
 
             int idx=str.indexOf("@");
             String str1=str.substring(0, idx);
