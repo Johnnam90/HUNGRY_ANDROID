@@ -207,7 +207,6 @@ public class UserActivity extends Activity {
                    //SharedPreferences 저장
                    UserPreference.setUserId(UserActivity.this, pub_userId_AD);
                    UserPreference.setUserPw(UserActivity.this, pub_userPw_AD);
-                   Log.d("MESSAGE", "1");
 
                    logIn_id.setText("");
                    logIn_pw.setText("");

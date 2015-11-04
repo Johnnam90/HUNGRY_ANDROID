@@ -72,10 +72,6 @@ public class ContentActivity extends Activity {
         // 리스트뷰 객체 참조
         replyListView = (ListView) findViewById(R.id.reply_listView);
 
-        //썸네일 설쩡쩡
-        id_thumbnail=(ImageView) findViewById(R.id.id_thumbnail);
-        Glide.with(this).load("http://54.64.160.105:8080/img/thumb/KWB.jpg").into(id_thumbnail);
-
         //아이디 설쩡
         idArea=(TextView) findViewById(R.id.id_area);
         idArea.setText("" + intent.getStringExtra("id"));
@@ -304,6 +300,29 @@ public class ContentActivity extends Activity {
 
                     replyListView.setAdapter(replyAdapter);
                 }
+            }catch (Exception ex){
+
+            }
+
+            //str3: 상세화면 썸네일
+            try{
+                JSONObject jsonObject = new JSONObject(str3);
+                JSONArray jsonArray = jsonObject.getJSONArray("results");
+                cnt = jsonArray.length();
+
+                for (int i = 0; i < cnt; i++) {
+                    JSONObject nodeData = jsonArray.getJSONObject(i);
+                    String thumb = nodeData.getString("thumb");
+                }
+
+                //썸네일 설쩡쩡
+                id_thumbnail=(ImageView) findViewById(R.id.id_thumbnail);
+
+                String basedUrl = "http://54.64.160.105:8080/img/thumb/";
+                //URL 연결하세염
+
+                Glide.with(ContentActivity.this).load().into(id_thumbnail);
+
             }catch (Exception ex){
 
             }
