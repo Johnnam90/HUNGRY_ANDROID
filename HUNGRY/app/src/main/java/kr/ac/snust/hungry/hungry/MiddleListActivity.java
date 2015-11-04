@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -359,7 +358,7 @@ public class MiddleListActivity extends Activity {
                     middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),
-                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10)));
+                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(11)));
                 }
 
                 middleListView.setAdapter(middle_listAdapter);
@@ -372,6 +371,7 @@ public class MiddleListActivity extends Activity {
                         String curId = curItem.getId();
                         String curScore = curItem.getScore();
                         String curContent = curItem.getContent();
+                        String curSeq = curItem.getSeq();
 
                         //Toast.makeText(getApplicationContext(), "글쓴이눈 ! " + curData, Toast.LENGTH_LONG).show();
 
@@ -379,6 +379,7 @@ public class MiddleListActivity extends Activity {
                         intent.putExtra("id", curId);
                         intent.putExtra("score", curScore);
                         intent.putExtra("content", curContent);
+                        intent.putExtra("posting_seq,", curSeq);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                     }

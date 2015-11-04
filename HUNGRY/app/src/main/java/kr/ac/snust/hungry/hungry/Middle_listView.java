@@ -1,18 +1,13 @@
 package kr.ac.snust.hungry.hungry;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by John on 8/27/15.
@@ -30,6 +25,7 @@ public class Middle_listView extends LinearLayout {
     private ImageView mPictures;
     private TextView mComment;
     private String mUrl;
+    private String mSeq;
 
     private ImageView mIcon;
     private TextView mText;
@@ -82,6 +78,8 @@ public class Middle_listView extends LinearLayout {
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
 
+        mSeq = aItem.getSeq();
+
     }
 
     //setter 선언
@@ -98,5 +96,6 @@ public class Middle_listView extends LinearLayout {
     public void setmUrl(String url) { mUrl = url; }
 //    public void setmPictures(String pictures) { mPictures.setImageBitmap(pictures);}
     public void setmComment(String comment) { mComment.setText(comment); }
+    public void setmSeq(String seq) { mSeq = seq; }
 
 }

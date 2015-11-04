@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,7 +46,10 @@ public class ContentActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_layout);
 
+        //Test
+        String txtSeq;
         Intent intent = getIntent();
+
 
         // 리스트뷰 객체 참조
         replyListView = (ListView) findViewById(R.id.reply_listView);
@@ -65,6 +69,9 @@ public class ContentActivity extends Activity {
         //내용 설정
         contentArea=(TextView) findViewById(R.id.contentTxt);
         contentArea.setText(""+intent.getStringExtra("content"));
+
+        txtSeq = intent.getStringExtra("posting_seq");
+        Log.d("MESSAGE", txtSeq);
 
         //내용 이미지 설쩡
         img1=(ImageView) findViewById(R.id.img1);
