@@ -2,6 +2,7 @@ package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,42 +56,6 @@ public class UserActivity extends Activity {
         {
             //Log-in Process
             Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
-
-            //Inflation
-            logIn_btn = (Button) findViewById(R.id.logIn_btn);
-            connectWeb_btn = (Button) findViewById(R.id.connectWeb_btn);
-            logIn_id = (EditText) findViewById(R.id.logIn_id);
-            logIn_pw = (EditText) findViewById(R.id.logIn_pw);
-
-        /*
-        * 로그인 MainActivity로 넘기기 */
-            logIn_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String userId = logIn_id.getText().toString();
-                    String userPw = logIn_pw.getText().toString();
-
-                    //AsyncTask에서 이용하기 위함
-                    pub_userId = userId;
-                    pub_userPw = userPw;
-
-                    task = new getJsonByPhp();
-                    task.execute("http://54.64.160.105/login_res.php");
-                }
-            });
-
-        /*
-        * 회원가입 */
-            connectWeb_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
-                    Intent web_intent = new Intent();
-                    web_intent.setAction(Intent.ACTION_VIEW);
-                    web_intent.setData(Uri.parse("http://54.64.160.105:8080"));
-                    startActivity(web_intent);
-                }
-            });
         }
         else {
             Toast.makeText(getApplicationContext(), "로그인 중입니다.", Toast.LENGTH_LONG).show();
@@ -103,6 +68,46 @@ public class UserActivity extends Activity {
             task = new getJsonByPhp();
             task.execute("http://54.64.160.105/login_res.php");
         }
+
+
+        //Inflation
+        logIn_btn = (Button) findViewById(R.id.logIn_btn);
+        connectWeb_btn = (Button) findViewById(R.id.connectWeb_btn);
+        logIn_id = (EditText) findViewById(R.id.logIn_id);
+        logIn_pw = (EditText) findViewById(R.id.logIn_pw);
+
+        /*
+        * 로그인 MainActivity로 넘기기 */
+        logIn_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userId = logIn_id.getText().toString();
+                String userPw = logIn_pw.getText().toString();
+
+                //AsyncTask에서 이용하기 위함
+                pub_userId = userId;
+                pub_userPw = userPw;
+
+                task = new getJsonByPhp();
+                task.execute("http://54.64.160.105/login_res.php");
+            }
+        });
+
+        /*
+        * 회원가입 */
+        connectWeb_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                Intent web_intent = new Intent();
+                web_intent.setAction(Intent.ACTION_VIEW);
+                web_intent.setData(Uri.parse("http://54.64.160.105:8080"));
+                startActivity(web_intent);
+            }
+        });
+
+
+
     }
 
     private class getJsonByPhp extends AsyncTask<String, Integer, String> {
@@ -201,7 +206,6 @@ public class UserActivity extends Activity {
                    //성공
                    Log.d("MESSAGE", "1");
 
-                   UserPreference.E
                    //SharedPreferences 저장
                    UserPreference.setUserId(UserActivity.this, pub_userId_AD);
                    UserPreference.setUserPw(UserActivity.this, pub_userPw_AD);

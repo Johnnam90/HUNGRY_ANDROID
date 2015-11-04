@@ -35,8 +35,5 @@ public class UserPreference {
         return getSharedPreferences(ctx).getString(PREF_USER_PW, "");
     }
 
-    public static void clearPref() {
-        SharedPreferences.Editor editor = pref.editor
-    }
 }
 
