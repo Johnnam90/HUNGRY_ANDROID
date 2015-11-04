@@ -33,4 +33,3 @@ public class ListItem {
     public String getData(int index) { return mData[index];}
     public void setData(String[] data)  { mData = data;}
 }
-
