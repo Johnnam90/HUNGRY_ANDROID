@@ -16,16 +16,42 @@
         android:background="@drawable/border_radius"
         >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#EB421C"
-            android:text="HUNGRY?"
-            android:textColor="#FFFFFF"
-            android:id="@+id/main_appName"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#EB421C"
+                android:text="HUNGRY?"
+                android:textColor="#FFFFFF"
+                android:id="@+id/main_appName"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="170dp"
+                />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/logout_btn"
+                android:id="@+id/main_log_out_img"
+                android:padding="5dp"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그아웃"
+                android:textColor="#FFFFFF"
+                android:id="@+id/main_log_out_text"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="left"/>
+
+        </LinearLayout>
+
         <!--radius를 위한 마진-->
 
         <LinearLayout

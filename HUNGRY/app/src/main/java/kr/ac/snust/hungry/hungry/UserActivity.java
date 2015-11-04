@@ -58,7 +58,7 @@ public class UserActivity extends Activity {
             Toast.makeText(getApplicationContext(), "인터넷 연결이 필요합니다.", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(getApplicationContext(), "로그인 중입니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "로그인 중입니다.", Toast.LENGTH_SHORT).show();
             // Call Next Activity
             pub_userId = UserPreference.getUserId(UserActivity.this);
             pub_userPw = UserPreference.getUserPw(UserActivity.this);
