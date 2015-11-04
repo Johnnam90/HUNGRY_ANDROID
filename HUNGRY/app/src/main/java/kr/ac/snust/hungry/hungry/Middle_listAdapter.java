@@ -56,6 +56,7 @@ public class Middle_listAdapter extends BaseAdapter {
             middle_listView.setmSeq(mItems.get(position).getSeq());
         }
 
+
         middle_listView = new Middle_listView(mContext, mItems.get(position));
 
         return middle_listView;

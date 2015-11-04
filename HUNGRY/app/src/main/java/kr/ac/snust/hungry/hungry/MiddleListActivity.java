@@ -365,7 +365,6 @@ public class MiddleListActivity extends Activity {
 
                     Log.v(logtag+" after temp", tempItem.getData(6));
 
-
                     middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),

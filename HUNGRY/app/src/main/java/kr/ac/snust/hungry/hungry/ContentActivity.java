@@ -88,9 +88,8 @@ public class ContentActivity extends Activity {
         contentArea=(TextView) findViewById(R.id.contentTxt);
         contentArea.setText("" + intent.getStringExtra("content"));
 
-        txtSeq = intent.getStringExtra("seq");
-
-        Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
+        //txtSeq = intent.getStringExtra("seq");
+        //Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
 
         task = new getJsonByPHP();
         task.execute("http://54.64.160.105/content.php");
