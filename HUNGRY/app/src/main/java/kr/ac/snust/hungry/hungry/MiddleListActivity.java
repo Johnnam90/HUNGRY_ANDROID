@@ -8,6 +8,7 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -355,10 +356,10 @@ public class MiddleListActivity extends Activity {
 
                     }
 
-                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
+                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),
-                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(11)));
+                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(0)));
                 }
 
                 middleListView.setAdapter(middle_listAdapter);
@@ -379,7 +380,7 @@ public class MiddleListActivity extends Activity {
                         intent.putExtra("id", curId);
                         intent.putExtra("score", curScore);
                         intent.putExtra("content", curContent);
-                        intent.putExtra("posting_seq,", curSeq);
+                        intent.putExtra("seq", curSeq);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                     }

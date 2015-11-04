@@ -1,6 +1,7 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 /**
  * Created by John on 8/27/15.
@@ -49,3 +50,4 @@ public class Middle_listItem {
     public String getComment() { return mComment; }
     public String getSeq() { return mSeq; }
 }
+
