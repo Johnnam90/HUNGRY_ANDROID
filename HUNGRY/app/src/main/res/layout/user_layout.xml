@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     >
 
                     <TextView
@@ -103,7 +103,7 @@
                         android:id="@+id/logIn_id"
                         android:textColor="#ff554433"
                         android:background="#FFFFFF"
-                        android:gravity="center"/>
+                        android:gravity="right"/>
 
 
                 </LinearLayout>
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_horizontal"
+                    android:gravity="left"
                     android:layout_marginTop="3dp"
                     >
 
@@ -131,7 +131,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#ff554433"
                         android:layout_marginRight="5dp"
-                        android:gravity="center"/>
+                        android:gravity="right"/>
                 </LinearLayout>
             </LinearLayout>
 
