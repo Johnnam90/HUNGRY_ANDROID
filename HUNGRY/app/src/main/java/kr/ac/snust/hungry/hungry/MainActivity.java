@@ -31,8 +31,10 @@ public class MainActivity extends Activity {
     Main_menuAdapter main_menuAdapter;
     ImageView main_thumb;
     TextView main_idInfo;
+    TextView main_nameInfo;
 //    BackgroundTask task;
     Bitmap bitmap;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +43,23 @@ public class MainActivity extends Activity {
 
 
         //Profile picture
-        main_thumb = (ImageView) findViewById(R.id.main_thumb);
-        String imgUrl = "http://54.64.160.105:8080/img/thumb/Screen%20Shot%202015-06-09%20at%202.05.50%20PM.png";
-        Glide.with(this).load(imgUrl).override(300, 300).centerCrop().into(main_thumb);
-//        task = new BackgroundTask();
-//        task.execute(imgUrl);
-        //end
 
 
         main_idInfo = (TextView) findViewById(R.id.main_idInfo);
+        main_nameInfo = (TextView) findViewById(R.id.main_nameInfo);
+        main_thumb = (ImageView) findViewById(R.id.main_thumb);
+
         Intent fromUser_intent = getIntent();
+
         main_idInfo.setText("" + fromUser_intent.getStringExtra("id"));
+        main_nameInfo.setText("" + fromUser_intent.getStringExtra("name"));
+
+        String imgUrl = "http://54.64.160.105:8080/img/thumb/";
+        String userImgUrl = imgUrl + fromUser_intent.getStringExtra("thumb");
+        Glide.with(this).load(userImgUrl).override(300, 300).centerCrop().into(main_thumb);
+
+        //다음 엑티비티로 넘기기 위해
+        userId = fromUser_intent.getStringExtra("id");
 
 
         //메인메뉴
@@ -78,6 +86,7 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent(getApplicationContext(), MiddleListActivity.class);
                 intent.putExtra("menu", curData);
+                intent.putExtra("id", userId);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 

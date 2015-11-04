@@ -37,7 +37,7 @@ public class MiddleListActivity extends Activity {
     TextView middle_menu_id;
     String selectedMenu;
     String obj;
-    String userid;
+    String userId;
 
     getJsonByPhp task;
 
@@ -123,7 +123,9 @@ public class MiddleListActivity extends Activity {
         //인텐트로 전달받은 값 메뉴 이름으로 설정
         middle_menu_id = (TextView) findViewById(R.id.middle_menu_id);
         Intent recievedIntent = getIntent();
+
         selectedMenu = recievedIntent.getStringExtra("menu");
+        userId = recievedIntent.getStringExtra("id");
 
         //post를 위한 요청 obj 변수
         if(selectedMenu.equals("최근 게시물")){obj="recent";}
@@ -193,8 +195,7 @@ public class MiddleListActivity extends Activity {
 
                     conn.connect();
 
-                    userid = "john";
-                    String string2post = "obj="+obj+"&"+"id="+userid;
+                    String string2post = "obj="+obj+"&"+"id="+userId;
                     byte[] bytes2post = string2post.getBytes();
 
                     //����Ǿ���. �ڵ尡 ���ϵǸ�,

@@ -131,12 +131,7 @@
                         android:textColor="#ff554433"
                         android:layout_marginRight="5dp"
                         android:gravity="center"/>
-
-
-
                 </LinearLayout>
-
-
             </LinearLayout>
 
             <!--로그인 버튼-->
@@ -185,7 +180,26 @@
                 android:textStyle="italic"
                 android:background="#EB421C"
                 android:id="@+id/connectWeb_btn"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="자동로그인"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:layout_marginRight="5dp"/>
 
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                />
         </LinearLayout>
 
         <!--Footer-->
@@ -193,7 +207,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="135dp"
+            android:layout_marginTop="90dp"
             >
 
             <TextView
@@ -203,7 +217,7 @@
                 android:textColor="#ff554433"
                 android:textStyle="bold"
                 android:textSize="13dp"
-                android:layout_marginLeft="298dp"
+                android:layout_marginLeft="288dp"
                 />
 
         </LinearLayout>
