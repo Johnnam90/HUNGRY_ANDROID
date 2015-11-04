@@ -1,6 +1,7 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,6 +49,7 @@ public class Middle_listAdapter extends BaseAdapter {
 //            middle_listView.setmPictures(mItems.get(position).getPictures());
             middle_listView.setmUrl(mItems.get(position).getUrl());
             middle_listView.setmComment(mItems.get(position).getComment());
+            middle_listView.setmSeq(mItems.get(position).getSeq());
         }
 
         return middle_listView;

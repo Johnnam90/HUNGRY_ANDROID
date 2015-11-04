@@ -1,19 +1,19 @@
 package kr.ac.snust.hungry.hungry;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+<<<<<<< HEAD
 import android.media.Image;
 //import android.util.Log;
+=======
+import android.util.Log;
+>>>>>>> origin/master
 import android.view.LayoutInflater;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by John on 8/27/15.
@@ -31,6 +31,7 @@ public class Middle_listView extends LinearLayout {
     private ImageView mPictures;
     private TextView mComment;
     private String mUrl;
+    private String mSeq;
 
     private ImageView mIcon;
     private TextView mText;
@@ -81,8 +82,12 @@ public class Middle_listView extends LinearLayout {
         Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
         //Log.v("listAdapter", mUrl);
 
+        Log.d("Message", "Middle_listView1");
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
+
+        mSeq = aItem.getSeq();
+
 
     }
 
@@ -100,5 +105,5 @@ public class Middle_listView extends LinearLayout {
     public void setmUrl(String url) { mUrl = url; }
 //    public void setmPictures(String pictures) { mPictures.setImageBitmap(pictures);}
     public void setmComment(String comment) { mComment.setText(comment); }
-
+    public void setmSeq(String seq) { mSeq = seq; }
 }

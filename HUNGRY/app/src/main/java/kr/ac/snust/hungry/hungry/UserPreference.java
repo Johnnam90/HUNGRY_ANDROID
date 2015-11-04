@@ -1,5 +1,6 @@
 package kr.ac.snust.hungry.hungry;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -7,7 +8,7 @@ import android.preference.PreferenceManager;
 /**
  * Created by John on 11/4/15.
  */
-public class UserPreference {
+public class UserPreference extends Activity {
     static final String PREF_USER_ID= "userid";
     static final String PREF_USER_PW = "userpw";
 
@@ -35,5 +36,11 @@ public class UserPreference {
         return getSharedPreferences(ctx).getString(PREF_USER_PW, "");
     }
 
+    public static void removeAllPreferences(Context ctx){
+        SharedPreferences pref = getSharedPreferences(ctx);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.commit();
+    }
 }
 

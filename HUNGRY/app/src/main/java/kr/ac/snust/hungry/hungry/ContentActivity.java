@@ -3,7 +3,9 @@ package kr.ac.snust.hungry.hungry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by gomi on 15. 9. 30..
@@ -37,13 +50,22 @@ public class ContentActivity extends Activity {
     TextView contentArea;
 
     ScrollView scrollView;
+    String txtSeq;
 
+    String imgURL[];
+
+    int cnt;
+
+
+    getJsonByPHP task;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_layout);
+
+
 
         Intent intent = getIntent();
 
@@ -64,7 +86,14 @@ public class ContentActivity extends Activity {
 
         //내용 설정
         contentArea=(TextView) findViewById(R.id.contentTxt);
-        contentArea.setText(""+intent.getStringExtra("content"));
+        contentArea.setText("" + intent.getStringExtra("content"));
+
+        txtSeq = intent.getStringExtra("seq");
+
+        Toast.makeText(getApplicationContext(), "" + txtSeq, Toast.LENGTH_LONG).show();
+
+        task = new getJsonByPHP();
+        task.execute("http://54.64.160.105/content.php");
 
         //내용 이미지 설쩡
         img1=(ImageView) findViewById(R.id.img1);
@@ -73,47 +102,9 @@ public class ContentActivity extends Activity {
 
         replyNum=(TextView) findViewById(R.id.reply_num);
 
-        String imgURL[] = {"http://54.64.160.105:8080/img/2.jpg","http://54.64.160.105:8080/img/1.jpg"};
-
-        if(imgURL.length==1){
-            Glide.with(this).load(imgURL[0]).into(img1);
-        }else if(imgURL.length==2){
-            Glide.with(this).load(imgURL[0]).into(img1);
-
-            img2.setVisibility(View.VISIBLE);
-            Glide.with(this).load(imgURL[1]).into(img2);
-        }else if(imgURL.length==3){
-            Glide.with(this).load(imgURL[0]).into(img1);
-
-            img2.setVisibility(View.VISIBLE);
-            Glide.with(this).load(imgURL[1]).into(img2);
-
-            img3.setVisibility(View.VISIBLE);
-            Glide.with(this).load(imgURL[2]).into(img3);
-        }
-
         // 어댑터 객체 생성
         replyAdapter = new reply_listAdapter(this);
 
-        // 아이템 데이터 만들기
-        Resources res = getResources();
-        replyAdapter.addItem(new reply_listItem("라곰", "2015-06-09", "900 원"));
-        replyAdapter.addItem(new reply_listItem("혀누", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("민서크", "2015-06-09", "900 원"));
-        replyAdapter.addItem(new reply_listItem("아이유", "2015-06-09", "900 원"));
-        replyAdapter.addItem(new reply_listItem("졘졘", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("쬲", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("KRK", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("KMS", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("NHW", "2015-06-09", "1500 원"));
-        replyAdapter.addItem(new reply_listItem("우왛", "2015-06-09", "1500 원"));
-
-        int cnt=replyAdapter.getCount();
-        replyNum.setText(""+cnt);
-        replyListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cnt * 160));
-
-        // 리스트뷰에 어댑터 설정
-        replyListView.setAdapter(replyAdapter);
 
         //스크롤 화면 맨 위로 강제이동
         scrollView=(ScrollView) findViewById(R.id.scrollView);
@@ -154,5 +145,168 @@ public class ContentActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class getJsonByPHP extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected String doInBackground(String... urls) {
+            StringBuilder jsonHtml = new StringBuilder();
+            try{
+                //url 변수 선언
+                URL url = new URL(urls[0]);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                //타임아웃
+                if(conn != null)    {
+                    conn.setConnectTimeout(10000);
+
+
+                    /* post 하는 부분 */
+                    //전달 헤더 설정
+                    conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setRequestMethod("POST");
+
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+                    conn.setUseCaches(false);
+                    conn.setDefaultUseCaches(false);
+
+                    conn.connect();
+
+                    String string2post = "posting_seq="+txtSeq;
+                    byte[] bytes2post = string2post.getBytes();
+
+                    //����Ǿ���. �ڵ尡 ���ϵǸ�,
+                    //
+                    //먼저 보내기. outputStream을 이용함.
+                    OutputStream outputstream = conn.getOutputStream();
+                    outputstream.write(bytes2post);
+                    outputstream.flush();
+                    outputstream.close();
+
+                    //���� bytes �ε� stream �ް�
+                    if(HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
+                        InputStream inputstream_0 = conn.getInputStream();
+                        //InputStreamReader   bytes stream �� character stream ���� �ٲٰ�.
+                        InputStreamReader inputstreamreader_0 = new InputStreamReader(inputstream_0, "UTF-8");
+                        //inputstreamreader   reader�� wrap�ϰ� buffered ������༭ �̿��ϱ� ���� ��. (�ð����̵�)
+                        BufferedReader buffered = new BufferedReader(inputstreamreader_0);
+
+                        //buffered data�� ó����
+                        for (; ; ) {
+                            //�ؽ�Ʈ ������ �о� ����
+                            String line = buffered.readLine();
+
+                            //Toast.makeText(getApplicationContext(), ""+line, Toast.LENGTH_SHORT).show();
+                            if (line == null) break;
+                            // ����� �ؽ�Ʈ ������ jsonHtml stringbuilder�� ����.
+                            jsonHtml.append(line + "\n");
+                        }
+                        //bufferedReader �ݰ�.
+                        buffered.close();
+                        inputstreamreader_0.close();
+                        inputstream_0.close();
+
+                        //HttpURLConnection �� �ݰ�.
+                        conn.disconnect();
+                    }
+                }
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+            return jsonHtml.toString();
+        }
+
+        protected void onPostExecute(String str){
+            String commentSeq;
+            String commentContent;
+            String commentRegdate;
+            String commentWriter;
+
+
+            int idx=str.indexOf("@");
+            String str1=str.substring(0, idx);
+            String str2=str.substring(idx + 1);
+
+            Resources res = getResources();
+
+            //str1: 이미지, Glide 설졍
+
+            try{
+                String basedUrl = "http://54.64.160.105:8080/img/";
+
+                JSONObject jsonObject = new JSONObject(str1);
+                JSONArray jsonArray = jsonObject.getJSONArray("results");
+
+                imgURL = new String[jsonArray.length()];
+
+                for(int i=0; i< jsonArray.length(); i++){
+                    JSONObject nodeData = jsonArray.getJSONObject(i);
+
+                    imgURL[i] =basedUrl + nodeData.getString("img");
+                    Log.d("imgURL",imgURL[i]);
+                }
+                if(imgURL.length==1){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
+                }else if(imgURL.length==2){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
+
+                    img2.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[1]).into(img2);
+                }else if(imgURL.length==3){
+                    Glide.with(ContentActivity.this).load(imgURL[0]).into(img1);
+
+                    img2.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[1]).into(img2);
+
+                    img3.setVisibility(View.VISIBLE);
+                    Glide.with(ContentActivity.this).load(imgURL[2]).into(img3);
+                }
+            }catch (Exception ex){
+
+            }
+
+            //str2: 댓글, 리스트뷰 작성
+            ArrayList<reply_listItem> lastDatas = new ArrayList<reply_listItem>();
+            StringBuilder tempLastString = new StringBuilder();
+
+            try{
+                JSONObject jsonObject = new JSONObject(str2);
+                JSONArray jsonArray = jsonObject.getJSONArray("results");
+                cnt = jsonArray.length();
+
+                for (int i = 0; i < cnt; i++) {
+                    JSONObject nodeData = jsonArray.getJSONObject(i);
+
+                    commentContent = nodeData.getString("content");
+                    commentWriter = nodeData.getString("writer");
+                    commentRegdate = nodeData.getString("regdate");
+
+                    reply_listItem data = new reply_listItem(commentContent, commentWriter, commentRegdate);
+
+                    lastDatas.add(i, data);
+
+                    //making List View just like replyAdapter.addItem(new reply_listItem(writer,regdate, content));
+                    for(int r=0; r<lastDatas.size();r++){
+
+                        reply_listItem tempItem = lastDatas.get(r);
+
+                        replyAdapter.addItem(new reply_listItem(tempItem.getData(1), tempItem.getData(2), tempItem.getData(0)));
+                    }
+                    //댓글위한 세로 길이 확보
+
+                    cnt+=1;
+                    replyNum.setText(""+cnt);
+                    replyListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cnt * 160));
+
+                    replyListView.setAdapter(replyAdapter);
+                }
+            }catch (Exception ex){
+
+            }
+        }
     }
 }

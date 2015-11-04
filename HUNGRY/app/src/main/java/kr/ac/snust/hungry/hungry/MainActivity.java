@@ -1,13 +1,17 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +36,6 @@ public class MainActivity extends Activity {
     ImageView main_thumb;
     TextView main_idInfo;
     TextView main_nameInfo;
-//    BackgroundTask task;
     Bitmap bitmap;
     String userId;
 
@@ -41,9 +44,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //Profile picture
-
 
         main_idInfo = (TextView) findViewById(R.id.main_idInfo);
         main_nameInfo = (TextView) findViewById(R.id.main_nameInfo);
@@ -103,6 +104,38 @@ public class MainActivity extends Activity {
 //        imageRound.getRoundedCornerBitmap();
     }
 
+    /*
+    * 뒤로가기버튼 처리 */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //YES Button
+            AlertDialog.Builder altDlg = new AlertDialog.Builder(this);
+            altDlg.setMessage("로그아웃 하시겠습니까?\n자동로그인 정보는 삭제됩니다.");
+            altDlg.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whitchutton) {
+                    //Revome all SharedPreferences Data
+                    UserPreference.removeAllPreferences(MainActivity.this);
+
+                    Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+            });
+            //NO Button
+            altDlg.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int witchButton) {
+                    dialog.cancel();
+                }
+            });
+
+            //Title
+            altDlg.setTitle("Are You Sure?");
+            //Image
+            altDlg.setIcon(R.drawable.hungry_logo);
+            altDlg.show();
+        }
+        return false;
+    }
 
     /**
      * ImageView(main_thumb)에 URL을 이용하여 이미지를 나타내기 위한 클래스
@@ -158,4 +191,5 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

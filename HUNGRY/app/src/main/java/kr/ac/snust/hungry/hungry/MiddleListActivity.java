@@ -8,13 +8,13 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -264,12 +264,12 @@ public class MiddleListActivity extends Activity {
             Resources res = getResources();
 
             //임시 이미지 URL
-            url[0] = "http://54.64.160.105:8080/img/2.jpg";
-            url[1] = "http://54.64.160.105:8080/img/3.png";
-            url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
-            url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
-            url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
-
+//            url[0] = "http://54.64.160.105:8080/img/2.jpg";
+//            url[1] = "http://54.64.160.105:8080/img/3.png";
+//            url[2] = "http://54.64.160.105:8080/img/P20150110_140203242_F660F5AC-04FD-413C-B623-78F8EA3B1DD0.jpg";
+//            url[3] = "http://54.64.160.105:8080/img/IMG_5583.jpg";
+//            url[4] = "http://54.64.160.105:8080/img/Screen%20Shot%202015-05-26%20at%201.12.10%20PM.png";
+//
 
 
             ArrayList<ListItem> lastDatas = new ArrayList<ListItem>();
@@ -362,12 +362,16 @@ public class MiddleListActivity extends Activity {
 
                     }
 
+<<<<<<< HEAD
                     Log.v(logtag+" after temp", tempItem.getData(6));
 
                     middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(0),
+=======
+                    middle_listAdapter.addItem(new Middle_listItem(tempItem.getData(2),
+>>>>>>> origin/master
                             tempItem.getData(5), tempItem.getData(3), typeImg, tasteImg,
                             locImg, res.getDrawable(R.drawable.time_dn),
-                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10)));
+                            tempItem.getData(1), "http://54.64.160.105:8080/img/"+tempItem.getData(6), tempItem.getData(10), tempItem.getData(0)));
                 }
 
                 middleListView.setAdapter(middle_listAdapter);
@@ -380,6 +384,7 @@ public class MiddleListActivity extends Activity {
                         String curId = curItem.getId();
                         String curScore = curItem.getScore();
                         String curContent = curItem.getContent();
+                        String curSeq = curItem.getSeq();
 
                         //Toast.makeText(getApplicationContext(), "글쓴이눈 ! " + curData, Toast.LENGTH_LONG).show();
 
@@ -387,8 +392,10 @@ public class MiddleListActivity extends Activity {
                         intent.putExtra("id", curId);
                         intent.putExtra("score", curScore);
                         intent.putExtra("content", curContent);
+                        intent.putExtra("seq", curSeq);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
+                        Log.d("MESSAGE1", "OK");
                     }
 
                 });

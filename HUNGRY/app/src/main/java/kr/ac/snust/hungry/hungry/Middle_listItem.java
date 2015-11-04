@@ -1,6 +1,7 @@
 package kr.ac.snust.hungry.hungry;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 /**
  * Created by John on 8/27/15.
@@ -17,10 +18,11 @@ public class Middle_listItem {
     private String mContent;
     private String mUrl;
     private String mComment;
+    private String mSeq;
 
     //순서는 인자순
     public Middle_listItem (String id, String score, String reg, Drawable type, Drawable taste,
-                            Drawable loc, Drawable time, String content, String url, String comment) {
+                            Drawable loc, Drawable time, String content, String url, String comment, String seq) {
 //        mTmb = tmb;
         mId = id;
         mScore = score;
@@ -32,6 +34,7 @@ public class Middle_listItem {
         mContent = content;
         mUrl = url;
         mComment = comment;
+        mSeq = seq;
     }
 
 //    public Drawable getTmb() { return mTmb; }
@@ -45,4 +48,6 @@ public class Middle_listItem {
     public String  getContent() { return mContent; }
     public String getUrl() { return mUrl; }
     public String getComment() { return mComment; }
+    public String getSeq() { return mSeq; }
 }
+
