@@ -29,16 +29,17 @@ public class Middle_listAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         Middle_listView middle_listView;
-<<<<<<< HEAD
-        if(convertView == null) {
-            middle_listView = new Middle_listView(mContext, mItems.get(position));
-        } else {
-            middle_listView = (Middle_listView) convertView;
 
+
+        middle_listView = new Middle_listView(mContext, mItems.get(position));
+
+        //middle_listView = (Middle_listView) convertView;
+        return middle_listView;
             //setIcon(View)에 getIcon(Item)을 넘기며 자료를 설정 Item -> Adapter -> View
             //특정 순서의(mItems.get(position) 자료를 인자로 넘긴다
 
 //            middle_listView.setmTmb(mItems.get(position).getTmb());
+/*
             middle_listView.setmId(mItems.get(position).getId());
             middle_listView.setmScore(mItems.get(position).getScore());
             middle_listView.setmReg(mItems.get(position).getReg());
@@ -54,12 +55,12 @@ public class Middle_listAdapter extends BaseAdapter {
             middle_listView.setmComment(mItems.get(position).getComment());
             middle_listView.setmSeq(mItems.get(position).getSeq());
         }
-=======
 
         middle_listView = new Middle_listView(mContext, mItems.get(position));
->>>>>>> origin/master
 
         return middle_listView;
+
+        */
     }
 
     /*
