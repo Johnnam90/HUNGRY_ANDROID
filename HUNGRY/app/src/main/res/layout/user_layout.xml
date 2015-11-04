@@ -181,33 +181,13 @@
                 android:background="#EB421C"
                 android:id="@+id/connectWeb_btn"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="자동로그인"
-                android:textSize="10dp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:gravity="center"
-                android:layout_marginRight="5dp"/>
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                />
-        </LinearLayout>
 
         <!--Footer-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="120dp"
             >
 
             <TextView
@@ -219,7 +199,6 @@
                 android:textSize="13dp"
                 android:layout_marginLeft="288dp"
                 />
-
         </LinearLayout>
     </LinearLayout>
 

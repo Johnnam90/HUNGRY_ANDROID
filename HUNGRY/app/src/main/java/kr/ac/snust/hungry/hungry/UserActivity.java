@@ -106,8 +106,6 @@ public class UserActivity extends Activity {
             }
         });
 
-
-
     }
 
     private class getJsonByPhp extends AsyncTask<String, Integer, String> {
