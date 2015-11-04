@@ -72,6 +72,9 @@ public class ContentActivity extends Activity {
         // 리스트뷰 객체 참조
         replyListView = (ListView) findViewById(R.id.reply_listView);
 
+        //썸네일 설쩡쩡
+        id_thumbnail=(ImageView) findViewById(R.id.id_thumbnail);
+
         //아이디 설쩡
         idArea=(TextView) findViewById(R.id.id_area);
         idArea.setText("" + intent.getStringExtra("id"));
@@ -220,12 +223,17 @@ public class ContentActivity extends Activity {
             String commentContent;
             String commentRegdate;
             String commentWriter;
+            String contentThumb = null;
 
             Log.d("onPostExe","OKOK");
 
             int idx=str.indexOf("@");
+            int idx2=str.indexOf("%");
             String str1=str.substring(0, idx);
-            String str2=str.substring(idx + 1);
+            String str2=str.substring(idx + 1,idx2);
+            String str3=str.substring(idx2 + 1);
+
+            Log.d("tringtring",str3);
 
             Resources res = getResources();
 
@@ -308,20 +316,14 @@ public class ContentActivity extends Activity {
             try{
                 JSONObject jsonObject = new JSONObject(str3);
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
-                cnt = jsonArray.length();
 
-                for (int i = 0; i < cnt; i++) {
-                    JSONObject nodeData = jsonArray.getJSONObject(i);
-                    String thumb = nodeData.getString("thumb");
-                }
-
-                //썸네일 설쩡쩡
-                id_thumbnail=(ImageView) findViewById(R.id.id_thumbnail);
+                JSONObject nodeData=jsonArray.getJSONObject(0);
+                contentThumb=nodeData.getString("thumb");
 
                 String basedUrl = "http://54.64.160.105:8080/img/thumb/";
-                //URL 연결하세염
+                String thumbURL=basedUrl+contentThumb;
 
-                Glide.with(ContentActivity.this).load().into(id_thumbnail);
+                Glide.with(ContentActivity.this).load(thumbURL).override(70,70).centerCrop().into(id_thumbnail);
 
             }catch (Exception ex){
 
