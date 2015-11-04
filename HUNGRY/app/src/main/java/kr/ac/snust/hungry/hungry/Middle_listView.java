@@ -2,12 +2,12 @@ package kr.ac.snust.hungry.hungry;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-<<<<<<< HEAD
+
 import android.media.Image;
 //import android.util.Log;
-=======
+
 import android.util.Log;
->>>>>>> origin/master
+
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
