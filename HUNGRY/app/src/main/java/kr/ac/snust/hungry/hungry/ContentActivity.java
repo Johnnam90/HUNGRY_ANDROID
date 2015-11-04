@@ -3,6 +3,7 @@ package kr.ac.snust.hungry.hungry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by gomi on 15. 9. 30..
@@ -39,12 +43,21 @@ public class ContentActivity extends Activity {
 
     ScrollView scrollView;
 
+    getJsonByPHP task;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_layout);
+
+        //데이터 받아오는 역할을 하는 AsyncTask 상속 받은 클래스
+        task = new getJsonByPHP();
+
+        //데이터 받아오는 쓰레드 시작
+        task.execute(new URL("http://54.64.160.105/"),new URL("http://54.64.160.105/"));
+
 
         //Test
         String txtSeq;
@@ -161,5 +174,21 @@ public class ContentActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private class getJsonByPHP extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected String doInBackground(String... urls) {
+            StringBuilder jsonHTML= new StringBuilder();
+
+            try{
+                //url 변수 선언
+                URL url1=new URL(urls[0]);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }
