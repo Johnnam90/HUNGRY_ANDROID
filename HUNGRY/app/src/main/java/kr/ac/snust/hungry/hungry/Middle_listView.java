@@ -2,6 +2,7 @@ package kr.ac.snust.hungry.hungry;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -75,10 +76,12 @@ public class Middle_listView extends LinearLayout {
 //        Glide.with(context).load(aItem.getUrl()).override(180, 180).centerCrop().into(mPictures);
         Glide.with(context).load(mUrl).override(180, 180).centerCrop().into(mPictures);
 
+        Log.d("Message", "Middle_listView1");
         mComment = (TextView) findViewById(R.id.middle_commentBtn);
         mComment.setText(aItem.getComment());
 
         mSeq = aItem.getSeq();
+
 
     }
 
@@ -97,5 +100,4 @@ public class Middle_listView extends LinearLayout {
 //    public void setmPictures(String pictures) { mPictures.setImageBitmap(pictures);}
     public void setmComment(String comment) { mComment.setText(comment); }
     public void setmSeq(String seq) { mSeq = seq; }
-
 }
