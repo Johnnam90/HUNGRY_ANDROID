@@ -225,15 +225,12 @@ public class ContentActivity extends Activity {
             String commentWriter;
             String contentThumb = null;
 
-            Log.d("onPostExe","OKOK");
 
             int idx=str.indexOf("@");
             int idx2=str.indexOf("%");
             String str1=str.substring(0, idx);
             String str2=str.substring(idx + 1,idx2);
             String str3=str.substring(idx2 + 1);
-
-            Log.d("tringtring",str3);
 
             Resources res = getResources();
 

@@ -27,7 +27,7 @@
             android:layout_marginTop="5dp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:textSize="9dp"/>
+            android:textSize="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -88,13 +88,13 @@
                     >
 
                     <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="38dp"
+                        android:layout_height="25dp"
                         android:text="I  D"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:textSize="20dp"
-                        android:layout_marginRight="11dp"
+                        android:layout_marginRight="5dp"
                         android:gravity="left" />
                     <!--Id, PW 비율-->
 
@@ -117,13 +117,13 @@
                     >
 
                     <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="38dp"
+                        android:layout_height="25dp"
                         android:text="PW"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:textSize="20dp"
-                        android:layout_marginRight="11dp"
+                        android:layout_marginRight="5dp"
                         android:gravity="left" />
 
                     <EditText
@@ -132,7 +132,7 @@
                         android:id="@+id/logIn_pw"
                         android:background="#FFFFFF"
                         android:textColor="#ff554433"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginRight="8dp"
                         android:gravity="center"
                         android:inputType="textPassword"/>
                 </LinearLayout>
